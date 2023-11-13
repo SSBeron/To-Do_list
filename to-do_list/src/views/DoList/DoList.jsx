@@ -12,7 +12,7 @@ const DoList = () => {
     <section className="flex-col w-3/5 h-3/5 p-3 border-2 bg-zinc-300 rounded-md shadow-2xl max-w-xl">
       <Title />
 
-      <AddNote />
+      <AddNote setNotesProp={setNotes} />
 
       {notes.map((noteObject, i) => (
         <ListItem
