@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Roboto", "sans-serif"],
+        display: ["Indie Flower", "cursive"],
       },
     },
   },

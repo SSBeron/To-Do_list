@@ -14,20 +14,23 @@ export default function AddNote({ setNotesProp }) {
     }
   };
   return (
-    <div className="flex justify-between items-center space-x-2 my-2 border-b border-black">
+    <div className="flex justify-between items-center space-x-2 m-4 pb-2 border-dashed border-b-2 border-black mb-5">
       <div className="flex w-full">
         <input
           value={text}
-          onKeyDown={(e) =>
-            e.key === "Enter" ? (e.currentTarget.value = "") : ""
-          }
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.currentTarget.value = "";
+              handleClick();
+            }
+          }}
           onChange={(e) => handleInputChange(e.target.value)}
-          className="m-1 p-2 w-full  rounded-lg text-lg bg-transparent hover:bg-gray-200 active:border-hidden"
+          className="m-1 pt-2 pl-2 w-full  rounded-lg bg-transparent hover:bg-gray-200 active:border-hidden"
           type="text"
           placeholder="Add note"
         />
       </div>
-      <div className="flex-col justify-center text-2xl rounded-md bg-red-100 active:bg-white">
+      <div className="flex-col justify-center  rounded-md bg-zinc-100 hover:bg-white active:bg-white pt-1.5">
         <button onClick={() => handleClick()} className="w-8 h-4 ">
           <FontAwesomeIcon icon={faPlus} />
         </button>
