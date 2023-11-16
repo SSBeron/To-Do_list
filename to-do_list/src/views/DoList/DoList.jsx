@@ -6,12 +6,18 @@ import NextPage from "./components/NextPage";
 
 const DoList = () => {
   const [notes, setNotes] = useState([
-    { note: "create more bugs", completed: false },
-    { note: "sleep", completed: true },
+    { id: 1, note: "Create more bugs", completed: false },
+    { id: 2, note: "Sleep", completed: true },
   ]);
+
+  const handleDelete = (id) => {
+    const newArr = notes.filter((note) => note.id !== id);
+    setNotes(newArr);
+  };
+
   return (
     <section className="flex flex-col w-3/5 bg-zinc-300 rounded-lg shadow-2xl max-w-xl min-h-[500px] justify-between">
-      <div className="flex flex-col">
+      <div className="flex flex-col ">
         <Title />
         <AddNote setNotesProp={setNotes} />
         {notes.map((noteObject, i) => (
@@ -19,6 +25,8 @@ const DoList = () => {
             key={i}
             note={noteObject.note}
             completed={noteObject.completed}
+            handleDelete={handleDelete}
+            id={noteObject.id}
           />
         ))}
       </div>

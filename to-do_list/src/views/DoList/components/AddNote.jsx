@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import uuid from "react-uuid";
 
 export default function AddNote({ setNotesProp }) {
   const [text, setText] = useState("");
@@ -9,7 +10,10 @@ export default function AddNote({ setNotesProp }) {
   };
   const handleClick = () => {
     if (text !== "") {
-      setNotesProp((prev) => [...prev, { note: text, completed: false }]);
+      setNotesProp((prev) => [
+        ...prev,
+        { id: uuid(), note: text, completed: false },
+      ]);
       setText("");
     }
   };
@@ -25,7 +29,7 @@ export default function AddNote({ setNotesProp }) {
             }
           }}
           onChange={(e) => handleInputChange(e.target.value)}
-          className="m-1 pt-2 pl-2 w-full  rounded-lg bg-transparent hover:bg-gray-200 active:border-hidden"
+          className="m-1 pt-2 pl-2 w-full  rounded-lg bg-transparent hover:bg-gray-200 active:border-hidden normal-case"
           type="text"
           placeholder="Add note"
         />
