@@ -35,7 +35,10 @@ export default function AddNote({ setNotesProp }) {
         />
       </div>
       <div className="flex-col justify-center  rounded-md bg-zinc-100 hover:bg-white active:bg-white pt-1.5">
-        <button onClick={() => handleClick()} className="w-8 h-4 ">
+        <button
+          onClick={() => handleClick()}
+          className="w-8 h-4 active:text-green-600"
+        >
           <FontAwesomeIcon icon={faPlus} />
         </button>
       </div>
