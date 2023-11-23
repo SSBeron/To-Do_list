@@ -8,11 +8,20 @@ const DoList = () => {
   const [notes, setNotes] = useState([
     { id: 1, note: "Create more bugs", completed: false },
     { id: 2, note: "Sleep", completed: true },
+    { id: 3, note: "Wake up", completed: true },
   ]);
 
   const handleDelete = (id) => {
-    const newArr = notes.filter((note) => note.id !== id);
+    const newArr = notes.filter((noteObj) => noteObj.id !== id);
     setNotes(newArr);
+  };
+
+  const handleEdit = (id, editedNote) => {
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
+        note.id === id ? { ...note, note: editedNote } : note
+      )
+    );
   };
 
   return (
@@ -26,6 +35,7 @@ const DoList = () => {
             note={noteObject.note}
             completed={noteObject.completed}
             handleDelete={handleDelete}
+            handleEdit={handleEdit}
             id={noteObject.id}
           />
         ))}
